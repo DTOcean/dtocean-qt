@@ -5,13 +5,13 @@ from encodings.aliases import aliases as _encodings
 
 import pandas
 
-from pandasqt.compat import Qt, QtCore, QtGui, Slot, Signal
-from pandasqt.encoding import Detector
-from pandasqt.models.DataFrameModel import DataFrameModel
-from pandasqt.views.CustomDelegates import DtypeComboDelegate
-from pandasqt.views._ui import icons_rc
+from dtocean_qt.compat import Qt, QtCore, QtGui, Slot, Signal
+from dtocean_qt.encoding import Detector
+from dtocean_qt.models.DataFrameModel import DataFrameModel
+from dtocean_qt.views.CustomDelegates import DtypeComboDelegate
+from dtocean_qt.views._ui import icons_rc
 
-from pandasqt.utils import fillNoneValues, convertTimestamps
+from dtocean_qt.utils import fillNoneValues, convertTimestamps
 
 class DelimiterValidator(QtGui.QRegExpValidator):
     """A Custom RegEx Validator.

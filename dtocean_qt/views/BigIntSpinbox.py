@@ -4,7 +4,7 @@
 @author: Matthias Ludwig - Datalyze Solutions
 """
 
-from pandasqt.compat import Qt, QtCore, QtGui
+from dtocean_qt.compat import Qt, QtCore, QtGui
 
 class BigIntSpinbox(QtGui.QAbstractSpinBox):
     """Custom spinbox for very big integers (like numpy.int64 and uint64)

@@ -4,13 +4,13 @@
 @author: Matthias Ludwig - Datalyze Solutions
 """
 
-from pandasqt.compat import Qt, QtCore, QtGui, Slot, Signal
+from dtocean_qt.compat import Qt, QtCore, QtGui, Slot, Signal
 
 
 import pandas
 import numpy as np
 
-from pandasqt.models.SupportedDtypes import SupportedDtypes
+from dtocean_qt.models.SupportedDtypes import SupportedDtypes
 
 DTYPE_ROLE = Qt.UserRole + 1
 DTYPE_CHANGE_ROLE = Qt.UserRole + 3
@@ -166,7 +166,7 @@ class ColumnDtypeModel(QtCore.QAbstractTableModel):
         The model must be initated with a dataframe already, since valid
         indexes are necessary. The `value` is a translated description of the
         data type. The translations can be found at
-        `pandasqt.translation.DTypeTranslator`.
+        `dtocean_qt.translation.DTypeTranslator`.
 
         If a datatype can not be converted, e.g. datetime to integer, a
         `NotImplementedError` will be raised.

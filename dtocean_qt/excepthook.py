@@ -3,7 +3,7 @@
 import time
 import cStringIO
 import traceback
-from pandasqt.compat import QtGui
+from dtocean_qt.compat import QtGui
 import codecs
 import os
 import tempfile

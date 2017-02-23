@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from pandasqt.compat import QtCore, QtGui, Qt, Slot, Signal
+from dtocean_qt.compat import QtCore, QtGui, Qt, Slot, Signal
 
-from pandasqt.models.DataFrameModel import DataFrameModel
-from pandasqt.views.EditDialogs import AddAttributesDialog, RemoveAttributesDialog
-from pandasqt.views.CustomDelegates import createDelegate
-from pandasqt.models.mime import PandasCellPayload, MimeData
-from pandasqt.models.SupportedDtypes import SupportedDtypes
+from dtocean_qt.models.DataFrameModel import DataFrameModel
+from dtocean_qt.views.EditDialogs import AddAttributesDialog, RemoveAttributesDialog
+from dtocean_qt.views.CustomDelegates import createDelegate
+from dtocean_qt.models.mime import PandasCellPayload, MimeData
+from dtocean_qt.models.SupportedDtypes import SupportedDtypes
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8

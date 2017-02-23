@@ -1,8 +1,8 @@
 import re
 
-from pandasqt.compat import QtCore, QtGui, Qt, Slot, Signal
+from dtocean_qt.compat import QtCore, QtGui, Qt, Slot, Signal
 
-from pandasqt.models.SupportedDtypes import SupportedDtypes
+from dtocean_qt.models.SupportedDtypes import SupportedDtypes
 
 import numpy
 from pandas import Timestamp

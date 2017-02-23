@@ -1,4 +1,4 @@
-SOURCES = ../../pandasqt/__init__.py \
+SOURCES = ../../dtocean_qt/__init__.py \
 	../../.tox/py27/lib/python2.7/site-packages/setuptools/command/build_ext.py \
 	../../.tox/py27/lib/python2.7/site-packages/setuptools/command/egg_info.py \
 	../../.tox/py27/lib/python2.7/site-packages/setuptools/command/test.py \
@@ -641,13 +641,13 @@ SOURCES = ../../pandasqt/__init__.py \
 	../../examples/util.py \
 	../../examples/BasicExample.py \
 	../../examples/TestApp.py \
-	../../pandasqt/BigIntSpinbox.py \
-	../../pandasqt/CustomDelegates.py \
-	../../pandasqt/DataFrameModel.py \
-	../../pandasqt/ColumnDtypeModel.py \
-	../../pandasqt/translation.py \
+	../../dtocean_qt/BigIntSpinbox.py \
+	../../dtocean_qt/CustomDelegates.py \
+	../../dtocean_qt/DataFrameModel.py \
+	../../dtocean_qt/ColumnDtypeModel.py \
+	../../dtocean_qt/translation.py \
 	../../setup.py \
 	../../__init__.py 
 
-TRANSLATIONS = ../../pandasqt/i18n/de.ts 
+TRANSLATIONS = ../../dtocean_qt/i18n/de.ts 
 

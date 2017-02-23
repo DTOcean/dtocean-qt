@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from pandasqt.compat import Qt, QtCore, QtGui
+from dtocean_qt.compat import Qt, QtCore, QtGui
 
 
 import pytest
@@ -9,8 +9,8 @@ import pytestqt
 import numpy
 import pandas
 
-from pandasqt.views.CustomDelegates import BigIntSpinboxDelegate, CustomDoubleSpinboxDelegate, TextDelegate, createDelegate
-from pandasqt.models.DataFrameModel import DataFrameModel
+from dtocean_qt.views.CustomDelegates import BigIntSpinboxDelegate, CustomDoubleSpinboxDelegate, TextDelegate, createDelegate
+from dtocean_qt.models.DataFrameModel import DataFrameModel
 
 class DemoTableView(QtGui.QTableView):
 

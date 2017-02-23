@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from pandasqt.compat import Qt, QtCore, QtGui
+from dtocean_qt.compat import Qt, QtCore, QtGui
 
 
 import pytest
 
-from pandasqt.views.BigIntSpinbox import BigIntSpinbox
+from dtocean_qt.views.BigIntSpinbox import BigIntSpinbox
 
 class TestClass(object):
 

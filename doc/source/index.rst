@@ -43,11 +43,11 @@ A very simple example::
     from PyQt4 import QtGui
 
     import pandas
-    import pandasqt
+    import dtocean_qt
     import numpy
 
     """setup a new empty model"""
-    model = pandasqt.DataFrameModel()
+    model = dtocean_qt.DataFrameModel()
 
     """setup an application and create a table view widget"""
     app = QtGui.QApplication([])
@@ -67,7 +67,7 @@ A very simple example::
     model.setDataFrame(data)
 
     """assign new delegates, only useful for big int or float values"""
-    pandasqt.setDelegatesFromDtype(widget)
+    dtocean_qt.setDelegatesFromDtype(widget)
 
     """start the app"""
     app.exec_()

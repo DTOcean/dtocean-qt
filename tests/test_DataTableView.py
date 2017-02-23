@@ -1,12 +1,12 @@
-from pandasqt.compat import QtCore, QtGui, Qt
+from dtocean_qt.compat import QtCore, QtGui, Qt
 
 import pytest
 import pytestqt
 
 import pandas
 
-from pandasqt.views.DataTableView import DataTableWidget
-from pandasqt.models.DataFrameModel import DataFrameModel
+from dtocean_qt.views.DataTableView import DataTableWidget
+from dtocean_qt.models.DataFrameModel import DataFrameModel
 
 @pytest.fixture()
 def dataModel():

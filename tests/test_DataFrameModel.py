@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import random
 
-from pandasqt.compat import Qt, QtCore, QtGui
+from dtocean_qt.compat import Qt, QtCore, QtGui
 
 
 import pytest
@@ -11,9 +11,9 @@ import decimal
 import numpy
 import pandas
 
-from pandasqt.models.DataFrameModel import DataFrameModel, DATAFRAME_ROLE
-from pandasqt.models.DataSearch import DataSearch
-from pandasqt.models.SupportedDtypes import SupportedDtypes
+from dtocean_qt.models.DataFrameModel import DataFrameModel, DATAFRAME_ROLE
+from dtocean_qt.models.DataSearch import DataSearch
+from dtocean_qt.models.SupportedDtypes import SupportedDtypes
 
 def test_initDataFrame():
     model = DataFrameModel()

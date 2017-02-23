@@ -1,6 +1,6 @@
 import numpy
 import pytest
-from pandasqt.models.SupportedDtypes import SupportedDtypes, SupportedDtypesTranslator
+from dtocean_qt.models.SupportedDtypes import SupportedDtypes, SupportedDtypesTranslator
 
 @pytest.fixture()
 def expected_support():

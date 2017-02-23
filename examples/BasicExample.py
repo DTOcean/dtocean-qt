@@ -1,14 +1,14 @@
 import pandas
 import numpy
 import sys
-from pandasqt.excepthook import excepthook
+from dtocean_qt.excepthook import excepthook
 sys.excepthook = excepthook
 
 # use QtGui from the compat module to take care if correct sip version, etc.
-from pandasqt.compat import QtGui
-from pandasqt.models.DataFrameModel import DataFrameModel
-from pandasqt.views.DataTableView import DataTableWidget
-from pandasqt.views._ui import icons_rc
+from dtocean_qt.compat import QtGui
+from dtocean_qt.models.DataFrameModel import DataFrameModel
+from dtocean_qt.views.DataTableView import DataTableWidget
+from dtocean_qt.views._ui import icons_rc
 
 """setup a new empty model"""
 model = DataFrameModel()

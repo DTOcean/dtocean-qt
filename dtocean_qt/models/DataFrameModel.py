@@ -6,7 +6,7 @@
 
 from datetime import datetime
 
-from pandasqt.compat import Qt, QtCore, QtGui, Slot, Signal
+from dtocean_qt.compat import Qt, QtCore, QtGui, Slot, Signal
 
 
 import pandas
@@ -15,9 +15,9 @@ import numpy
 import parser
 import re
 
-from pandasqt.models.ColumnDtypeModel import ColumnDtypeModel
-from pandasqt.models.DataSearch import DataSearch
-from pandasqt.models.SupportedDtypes import SupportedDtypes
+from dtocean_qt.models.ColumnDtypeModel import ColumnDtypeModel
+from dtocean_qt.models.DataSearch import DataSearch
+from dtocean_qt.models.SupportedDtypes import SupportedDtypes
 
 DATAFRAME_ROLE = Qt.UserRole + 2
 
@@ -461,7 +461,7 @@ class DataFrameModel(QtCore.QAbstractTableModel):
         unfiltered.
 
         Args:
-            search(pandasqt.DataSearch): data search object to use.
+            search(dtocean_qt.DataSearch): data search object to use.
 
         Raises:
             TypeError: An error is raised, if the given parameter is not a
@@ -469,7 +469,7 @@ class DataFrameModel(QtCore.QAbstractTableModel):
 
         """
         if not isinstance(search, DataSearch):
-            raise TypeError('The given parameter must an `pandasqt.DataSearch` object')
+            raise TypeError('The given parameter must an `dtocean_qt.DataSearch` object')
 
         self._search = search
 

@@ -1,11 +1,11 @@
 import sys
 import time
-from pandasqt.compat import QtCore, QtGui, Qt, Slot, Signal
+from dtocean_qt.compat import QtCore, QtGui, Qt, Slot, Signal
 import imgs
 
-from pandasqt.views.OverlayProgressView import OverlayProgressWidget
+from dtocean_qt.views.OverlayProgressView import OverlayProgressWidget
 
-from pandasqt.models.ProgressThread import ProgressWorker, createThread
+from dtocean_qt.models.ProgressThread import ProgressWorker, createThread
 
 
 class ExampleWorker(ProgressWorker):

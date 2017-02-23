@@ -23,7 +23,7 @@ except ImportError as e:
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-version_file = open(os.path.join(here, 'pandasqt', '__init__.py'), 'rU')
+version_file = open(os.path.join(here, 'dtocean_qt', '__init__.py'), 'rU')
 __version__ = re.sub(
     r".*\b__version__\s+=\s+'([^']+)'.*",
     r'\1',
@@ -55,11 +55,10 @@ class PyTest(TestCommand):
 
 tests_require = ['easygui', 'pandas == 0.17.1', 'pyside', 'pytest', 'pytest-cov', 'pytest-qt', 'python-magic==0.4.6']
 setup(
-    name='pandas-qt',
+    name='dtocean-qt',
     version=__version__,
-    url='https://github.com/datalyze-solutions/pandas-qt',
     license='MIT License',
-    namespace_packages = ['pandasqt'],
+    namespace_packages = ['dtocean_qt'],
     author='Matthias Ludwig, Marcel Radischat, Mathew Topper',
     tests_require=tests_require,
     install_requires=['easygui', 'pandas'],
@@ -69,7 +68,7 @@ setup(
     long_description=long_description,
     
     include_package_data=True,
-    packages=['pandasqt'],
+    packages=['dtocean_qt'],
     
     platforms='any',
     test_suite='tests',

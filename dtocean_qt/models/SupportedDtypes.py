@@ -1,5 +1,5 @@
 import numpy as np
-from pandasqt.compat import QtCore
+from dtocean_qt.compat import QtCore
 
 class SupportedDtypesTranslator(QtCore.QObject):
     """Represents all supported datatypes and the translations (i18n).

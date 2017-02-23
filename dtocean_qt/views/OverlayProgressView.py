@@ -1,4 +1,4 @@
-from pandasqt.compat import QtCore, QtGui, Qt, Signal, Slot
+from dtocean_qt.compat import QtCore, QtGui, Qt, Signal, Slot
 
 class OverlayProgressWidget(QtGui.QFrame):
     def __init__(self, parent, workers=[], debug=True, margin=0):
