@@ -232,21 +232,21 @@ class DataFrameModel(QtCore.QAbstractTableModel):
         def convertValue(row, col, columnDtype):
             value = None
             if columnDtype == object:
-                value = self._dataFrame.ix[row, col]
+                value = self._dataFrame.iloc[row, col]
             elif columnDtype in self._floatDtypes:
-                value = round(float(self._dataFrame.ix[row, col]), self._float_precisions[str(columnDtype)])
+                value = round(float(self._dataFrame.iloc[row, col]), self._float_precisions[str(columnDtype)])
             elif columnDtype in self._intDtypes:
-                value = int(self._dataFrame.ix[row, col])
+                value = int(self._dataFrame.iloc[row, col])
             elif columnDtype in self._boolDtypes:
                 # TODO this will most likely always be true
                 # See: http://stackoverflow.com/a/715455
                 # well no: I am mistaken here, the data is already in the dataframe
                 # so its already converted to a bool
-                value = bool(self._dataFrame.ix[row, col])
+                value = bool(self._dataFrame.iloc[row, col])
 
             elif columnDtype in self._dateDtypes:
                 #print numpy.datetime64(self._dataFrame.ix[row, col])
-                value = pandas.Timestamp(self._dataFrame.ix[row, col])
+                value = pandas.Timestamp(self._dataFrame.iloc[row, col])
                 value = QtCore.QDateTime.fromString(str(value), self.timestampFormat)
                 #print value
             # else:
@@ -261,7 +261,7 @@ class DataFrameModel(QtCore.QAbstractTableModel):
         if role == Qt.DisplayRole:
             # return the value if you wanne show True/False as text
             if columnDtype == numpy.bool:
-                result = self._dataFrame.ix[rowi, coli]
+                result = self._dataFrame.iloc[rowi, coli]
             else:
                 result = convertValue(rowi, coli, columnDtype)
         elif role  == Qt.EditRole:
@@ -275,7 +275,7 @@ class DataFrameModel(QtCore.QAbstractTableModel):
             else:
                 result = None
         elif role == DATAFRAME_ROLE:
-            result = self._dataFrame.ix[rowi, coli]
+            result = self._dataFrame.iloc[rowi, coli]
         elif role == Qt.BackgroundRole:
             if self.freeze_first and coli == 0:
                 return QtGui.QBrush(Qt.lightGray)
