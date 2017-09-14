@@ -335,7 +335,7 @@ class CSVImportDialog(QtGui.QDialog):
         preview of the data.
 
         """
-        self._filename = self._filenameLineEdit.text()
+        self._filename = str(self._filenameLineEdit.text())
         self._guessEncoding(self._filename)
         self._previewFile()
 
@@ -378,7 +378,7 @@ class CSVImportDialog(QtGui.QDialog):
             index (int): An valid index of the combo box.
 
         """
-        encoding = self._encodingComboBox.itemText(index)
+        encoding = str(self._encodingComboBox.itemText(index))
         encoding = encoding.lower()
 
         self._encodingKey = _calculateEncodingKey(encoding)
@@ -581,7 +581,7 @@ class CSVExportDialog(QtGui.QDialog):
         index = False # row labels
 
         encodingIndex = self._encodingComboBox.currentIndex()
-        encoding = self._encodingComboBox.itemText(encodingIndex)
+        encoding = str(self._encodingComboBox.itemText(encodingIndex))
         encoding = _calculateEncodingKey(encoding.lower())
 
         try:
