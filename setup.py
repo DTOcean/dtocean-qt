@@ -58,13 +58,13 @@ setup(
     license='MIT License',
     namespace_packages = ['dtocean_qt'],
     author='Matthias Ludwig, Marcel Radischat, Mathew Topper',
-    tests_require=tests_require,
     install_requires=['easygui',
                       'pandas',
                       'python-magic',
                       # 'sip',
                       # 'PyQt4'
                       ],
+    tests_require=['pytest', 'pytest-qt'],
     cmdclass={'test': PyTest},
     author_email='m.Ludwig@datalyze-solutions.com, dataonlygreater@gmail.com',
     description=('Utilities to use pandas (the data analysis / manipulation '
@@ -83,8 +83,5 @@ setup(
         'Operating System :: OS Independent',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Software Development :: User Interfaces'
-        ],
-    extras_require={
-        'testing': ['pytest', 'pytest-qt']
-    }
+        ]
 )
