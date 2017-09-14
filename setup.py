@@ -60,7 +60,12 @@ setup(
     namespace_packages = ['dtocean_qt'],
     author='Matthias Ludwig, Marcel Radischat, Mathew Topper',
     tests_require=tests_require,
-    install_requires=['easygui', 'pandas', 'python-magic'],
+    install_requires=['easygui',
+                      'pandas',
+                      'python-magic',
+                      # 'sip',
+                      # 'PyQt4'
+                      ],
     cmdclass={'test': PyTest},
     author_email='m.Ludwig@datalyze-solutions.com, dataonlygreater@gmail.com',
     description=('Utilities to use pandas (the data analysis / manipulation '

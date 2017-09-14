@@ -4,6 +4,7 @@
 easygui
 pandas
 python-magic
+pyqt =4.11.4
 
 # TEST DEPENDENCIES
 pytest-cov
