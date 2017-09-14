@@ -1,21 +1,27 @@
 # -*- coding: utf-8 -*-
 import os
+import pytest
 import tempfile
 
 from dtocean_qt.compat import Qt, QtCore, QtGui
 
-import pytest
-
 try:
-    import magic
+    
     from dtocean_qt.views.CSVDialogs import (DelimiterValidator,
                                              DelimiterSelectionWidget,
                                              CSVImportDialog,
                                              CSVExportDialog)
-    from dtocean_qt.models.DataFrameModel import DataFrameModel
     SKIPTESTS = False
+    
 except ImportError, e:
-    SKIPTESTS = True
+    
+    if "libmagic" in str(e):
+        SKIPTESTS = True
+    else:
+        raise ImportError(e)
+    
+from dtocean_qt.models.DataFrameModel import DataFrameModel
+
 
 pytestmark = pytest.mark.skipif(SKIPTESTS,
                                 reason="Libmagic is not available")
@@ -61,7 +67,7 @@ class TestDelimiterBox(object):
         lineedit = box.findChildren(QtGui.QLineEdit)[0]
 
         delimiters = []
-        for button in buttons:
+        for button in reversed(buttons):
             with qtbot.waitSignal(box.delimiter, 1000):
                 qtbot.mouseClick(button, QtCore.Qt.LeftButton)
                 if lineedit.isEnabled():
@@ -82,7 +88,7 @@ class TestDelimiterBox(object):
         lineedit = box.findChildren(QtGui.QLineEdit)[0]
 
         delimiters = []
-        for button in buttons:
+        for button in reversed(buttons):
             with qtbot.waitSignal(box.delimiter, 1000):
                 qtbot.mouseClick(button, QtCore.Qt.LeftButton)
                 if lineedit.isEnabled():
@@ -183,6 +189,7 @@ class TestCSVImportWidget(object):
         assert csvwidget._previewTableView.model() is not None
 
         def _assert(x, path):
+            path = str(path)
             assert x
             assert isinstance(x, DataFrameModel)
             assert path
@@ -278,7 +285,7 @@ class TestDateTimeConversion(object):
         radiobuttons = groupboxes[0].findChildren(QtGui.QRadioButton)
 
         for button in radiobuttons:
-            if button.text() == 'Semicolon':
+            if str(button.text()) == 'Semicolon':
                 qtbot.mouseClick(button, QtCore.Qt.LeftButton)
                 break
 
@@ -307,7 +314,7 @@ class TestDateTimeConversion(object):
         radiobuttons = groupboxes[0].findChildren(QtGui.QRadioButton)
 
         for button in radiobuttons:
-            if button.text() == 'Semicolon':
+            if str(button.text()) == 'Semicolon':
                 qtbot.mouseClick(button, QtCore.Qt.LeftButton)
                 break
 
@@ -318,7 +325,7 @@ class TestDateTimeConversion(object):
 
         with qtbot.waitSignal(exportWidget.exported, timeout=3000):
             for button in buttons:
-                if button.text() == 'Export Data':
+                if str(button.text()) == 'Export Data':
                     qtbot.mouseClick(button, QtCore.Qt.LeftButton)
                     break
 
@@ -327,7 +334,7 @@ class TestDateTimeConversion(object):
         buttons = importWidget.findChildren(QtGui.QPushButton)
         with qtbot.waitSignal(importWidget.load, timeout=3000):
             for button in buttons:
-                if button.text() == 'Load Data':
+                if str(button.text()) == 'Load Data':
                     model_out_in = importWidget._previewTableView.model()
                     qtbot.mouseClick(button, QtCore.Qt.LeftButton)
                     break
@@ -340,4 +347,6 @@ class TestDateTimeConversion(object):
         assert all(comparator)
 
         df = model_out_in.dataFrame()
+        
+        assert not df.empty
 

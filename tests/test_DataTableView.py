@@ -24,8 +24,6 @@ def dataModel2():
 
 class TestTableViewWidget(object):
 
-
-
     def test_init(self, qtbot):
         widget = DataTableWidget()
         qtbot.addWidget(widget)
@@ -116,7 +114,7 @@ class TestTableViewWidget(object):
                 dlg_buttons = dlg.findChildren(QtGui.QPushButton)
 
                 for b in dlg_buttons:
-                    if b.text() == 'Cancel':
+                    if str(b.text()) == 'Cancel':
                         qtbot.mouseClick(b, QtCore.Qt.LeftButton)
                         break
             else:
@@ -150,7 +148,7 @@ class TestTableViewWidget(object):
                     columns.append(comboBox.itemText(i))
 
                 for b in dlg_buttons:
-                    if b.text() == 'Cancel':
+                    if str(b.text()) == 'Cancel':
                         qtbot.mouseClick(b, QtCore.Qt.LeftButton)
                         break
                 break
@@ -169,44 +167,43 @@ class TestTableViewWidget(object):
             dlg_buttons = dlg.findChildren(QtGui.QPushButton)
 
             for b in dlg_buttons:
-                if b.text() == 'OK':
+                if str(b.text()) == 'OK':
                     qtbot.mouseClick(b, QtCore.Qt.LeftButton)
                     break
 
             assert widget.view().model().columnCount() == columnCountBeforeInsert + 1 + index
 
-#    def test_removeColumns(self, qtbot, dataModel2):
-#        widget = DataTableWidget()
-#        qtbot.addWidget(widget)
-#        widget.show()
-#
-#        widget.setViewModel(dataModel2)
-#
-#        df = dataModel2.dataFrame().copy()
-#
-#        buttons = widget.findChildren(QtGui.QToolButton)
-#        for btn in buttons:
-#            if btn.isEnabled:
-#                qtbot.mouseClick(btn, QtCore.Qt.LeftButton)
-#                break
-#
-#        for btn in buttons:
-#            
-#            if btn.objectName() == 'removecolumnbutton':
-#                
-#                qtbot.mouseClick(btn, QtCore.Qt.LeftButton)                
-#                dlg = widget.findChildren(QtGui.QDialog)[-1]
-#                
-#                listview = dlg.findChildren(QtGui.QListView)[-1]
-#                listview.selectAll()
-#                
-#                dlg_buttons = dlg.findChildren(QtGui.QPushButton)
-#
-#                for b in dlg_buttons:
-#                    if b.text() == 'OK':
-#                        qtbot.mouseClick(b, QtCore.Qt.LeftButton)
-#                        break
-#                        
-#        with qtbot.waitSignal(widget.view().model().dataChanged,
-#                              timeout=10000):
-#            assert widget.view().model().columnCount() == 0
+    def test_removeColumns(self, qtbot, dataModel2):
+        
+        widget = DataTableWidget()
+        qtbot.addWidget(widget)
+        widget.show()
+
+        widget.setViewModel(dataModel2)
+        buttons = widget.findChildren(QtGui.QToolButton)
+        
+        for btn in buttons:
+            if btn.isEnabled():
+                qtbot.mouseClick(btn, QtCore.Qt.LeftButton)
+                break
+
+        for btn in buttons:
+                        
+            if str(btn.objectName()) == 'removecolumnbutton':
+                                
+                qtbot.mouseClick(btn, QtCore.Qt.LeftButton)                
+                dlg = widget.findChildren(QtGui.QDialog)[-1]
+                
+                listview = dlg.findChildren(QtGui.QListView)[-1]
+                listview.selectAll()
+                
+                dlg_buttons = dlg.findChildren(QtGui.QPushButton)
+
+                for b in dlg_buttons:
+                    if str(b.text()) == 'OK':
+                        qtbot.mouseClick(b, QtCore.Qt.LeftButton)
+                        break
+                        
+                break
+                        
+        assert widget.view().model().columnCount() == 0
