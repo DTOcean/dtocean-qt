@@ -40,7 +40,6 @@ def read(*filenames, **kwargs):
             buf.append(f.read())
     return sep.join(buf)
 
-long_description = read('README')
 
 class PyTest(TestCommand):
     def finalize_options(self):
@@ -70,7 +69,6 @@ setup(
     author_email='m.Ludwig@datalyze-solutions.com, dataonlygreater@gmail.com',
     description=('Utilities to use pandas (the data analysis / manipulation '
                  'library for Python) with Qt.'),
-    long_description=long_description,
     include_package_data=True,
     packages=['dtocean_qt'],
     platforms='any',
