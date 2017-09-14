@@ -389,7 +389,7 @@ class TestSetData(object):
         # pytest.set_trace()
         # everything is already set as false and since Qt.Unchecked = 0, 0 == False
         # therefore the assert will fail without further constraints
-        assert model.setData(index, qtbool) == value
+        assert model.setData(index, qtbool) == True
         assert model.data(index, role=Qt.DisplayRole) == value
         assert model.data(index, role=Qt.EditRole) == value
         assert model.data(index, role=Qt.CheckStateRole) == qtbool
@@ -614,7 +614,7 @@ class TestEditMode(object):
             for row in xrange(rowCount):
                 idx = model.index(row, columnCount + index)
                 newVal = idx.data(DATAFRAME_ROLE)
-                assert newVal == defaultVal
+                assert newVal.toPyObject() == defaultVal
 
     def test_remove_columns(self, model):
         model.enableEditing(True)

@@ -157,5 +157,6 @@ class TestTextDelegate(object):
         qtbot.keyPress(editor, QtCore.Qt.Key_F)
         qtbot.keyPress(editor, QtCore.Qt.Key_Enter)
         QtGui.QApplication.processEvents()
-        with qtbot.waitSignal(timeout=100):
-            assert index.data(QtCore.Qt.DisplayRole) == 'f'
+#        with qtbot.waitSignal(timeout=100):
+#            print index.data(QtCore.Qt.DisplayRole).toPyObject()
+        assert index.data(QtCore.Qt.DisplayRole).toPyObject() == 'f'
