@@ -195,7 +195,7 @@ class ColumnDtypeModel(QtCore.QAbstractTableModel):
         self.layoutAboutToBeChanged.emit()
 
         dtype = SupportedDtypes.dtype(value)
-        currentDtype = np.dtype(index.data(role=DTYPE_ROLE))
+        currentDtype = np.dtype(index.data(role=DTYPE_ROLE).toPyObject())
 
         if dtype is not None:
             if dtype != currentDtype:
