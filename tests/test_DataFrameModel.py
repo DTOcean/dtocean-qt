@@ -153,7 +153,7 @@ class TestSort(object):
     def test_sort(self, model, dataFrame, testAscending, modelAscending, isIdentic):
         temp = dataFrame.sort_values('A', ascending=testAscending)
         model.sort(0, order=modelAscending)
-        assert (dataFrame['A'] == temp['A']).all() == isIdentic
+        assert (dataFrame['A'].values == temp['A'].values).all() == isIdentic
 
 class TestData(object):
 
