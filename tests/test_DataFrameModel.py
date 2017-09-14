@@ -151,7 +151,7 @@ class TestSort(object):
         ]
     )
     def test_sort(self, model, dataFrame, testAscending, modelAscending, isIdentic):
-        temp = dataFrame.sort('A', ascending=testAscending)
+        temp = dataFrame.sort_values('A', ascending=testAscending)
         model.sort(0, order=modelAscending)
         assert (dataFrame['A'] == temp['A']).all() == isIdentic
 

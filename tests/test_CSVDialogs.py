@@ -323,7 +323,7 @@ class TestDateTimeConversion(object):
 
         buttons = exportWidget.findChildren(QtGui.QPushButton)
 
-        with qtbot.waitSignal(exportWidget.exported, timeout=3000):
+        with qtbot.waitSignal(exportWidget.exported, timeout=5000):
             for button in buttons:
                 if str(button.text()) == 'Export Data':
                     qtbot.mouseClick(button, QtCore.Qt.LeftButton)
@@ -332,7 +332,7 @@ class TestDateTimeConversion(object):
         import_lineedits[0].clear()
         qtbot.keyClicks(import_lineedits[0], tmp)
         buttons = importWidget.findChildren(QtGui.QPushButton)
-        with qtbot.waitSignal(importWidget.load, timeout=3000):
+        with qtbot.waitSignal(importWidget.load, timeout=5000):
             for button in buttons:
                 if str(button.text()) == 'Load Data':
                     model_out_in = importWidget._previewTableView.model()
