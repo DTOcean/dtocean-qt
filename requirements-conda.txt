@@ -1,0 +1,11 @@
+# REQUIREMENTS FOR CONDA INSTALLATION
+
+# INSTALLATION REQUIRED DEPENDENCIES
+easygui
+pandas
+python-magic
+
+# TEST DEPENDENCIES
+pytest-cov
+pytest-qt
+
