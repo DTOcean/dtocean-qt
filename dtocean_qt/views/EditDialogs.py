@@ -9,7 +9,9 @@ from pandas import Timestamp
 from pandas.tslib import NaTType
 
 class DefaultValueValidator(QtGui.QValidator):
+    
     def __init__(self, parent=None):
+        
         super(DefaultValueValidator, self).__init__(parent)
         self.dtype = None
 
@@ -22,31 +24,31 @@ class DefaultValueValidator(QtGui.QValidator):
     def validateType(self, dtype):
         self.dtype = dtype
 
-
     def fixup(self, string):
         pass
 
     def validate(self, s, pos):
+        
         if not s:
             # s is emtpy
-            return (QtGui.QValidator.Acceptable, s, pos)
+            return (QtGui.QValidator.Acceptable, pos)
 
         if self.dtype in SupportedDtypes.strTypes():
-            return (QtGui.QValidator.Acceptable, s, pos)
+            return (QtGui.QValidator.Acceptable, pos)
 
         elif self.dtype in SupportedDtypes.boolTypes():
             match = re.match(self.boolPattern, s)
             if match:
-                return (QtGui.QValidator.Acceptable, s, pos)
+                return (QtGui.QValidator.Acceptable, pos)
             else:
-                return (QtGui.QValidator.Invalid, s, pos)
+                return (QtGui.QValidator.Invalid, pos)
 
         elif self.dtype in SupportedDtypes.datetimeTypes():
             try:
-                ts = Timestamp(s)
-            except ValueError, e:
-                return (QtGui.QValidator.Intermediate, s, pos)
-            return (QtGui.QValidator.Acceptable, s, pos)
+                Timestamp(s)
+            except ValueError:
+                return (QtGui.QValidator.Intermediate, pos)
+            return (QtGui.QValidator.Acceptable, pos)
 
         else:
             dtypeInfo = None
@@ -55,8 +57,8 @@ class DefaultValueValidator(QtGui.QValidator):
                 if match:
                     try:
                         value = int(match.string)
-                    except ValueError, e:
-                        return (QtGui.QValidator.Invalid, s, pos)
+                    except ValueError:
+                        return (QtGui.QValidator.Invalid, pos)
 
                     dtypeInfo = numpy.iinfo(self.dtype)
 
@@ -65,32 +67,30 @@ class DefaultValueValidator(QtGui.QValidator):
                 if match:
                     try:
                         value = int(match.string)
-                    except ValueError, e:
-                        return (QtGui.QValidator.Invalid, s, pos)
+                    except ValueError:
+                        return (QtGui.QValidator.Invalid, pos)
 
                     dtypeInfo = numpy.iinfo(self.dtype)
 
             elif self.dtype in SupportedDtypes.floatTypes():
                 match = re.search(self.floatPattern, s)
-                print match
                 if match:
                     try:
                         value = float(match.string)
-                    except ValueError, e:
-                        return (QtGui.QValidator.Invalid, s, pos)
+                    except ValueError:
+                        return (QtGui.QValidator.Invalid, pos)
 
                     dtypeInfo = numpy.finfo(self.dtype)
 
-
             if dtypeInfo is not None:
                 if value >= dtypeInfo.min and value <= dtypeInfo.max:
-                    return (QtGui.QValidator.Acceptable, s, pos)
+                    return (QtGui.QValidator.Acceptable, pos)
                 else:
-                    return (QtGui.QValidator.Invalid, s, pos)
+                    return (QtGui.QValidator.Invalid, pos)
             else:
-                return (QtGui.QValidator.Invalid, s, pos)
+                return (QtGui.QValidator.Invalid, pos)
 
-        return (QtGui.QValidator.Invalid, s, pos)
+        return (QtGui.QValidator.Invalid, pos)
 
 
 class AddAttributesDialog(QtGui.QDialog):
@@ -105,12 +105,15 @@ class AddAttributesDialog(QtGui.QDialog):
     def initUi(self):
         self.setModal(True)
         self.resize(303, 168)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding,
+                                       QtGui.QSizePolicy.Fixed)
         self.setSizePolicy(sizePolicy)
 
         self.verticalLayout = QtGui.QVBoxLayout(self)
 
-        self.dialogHeading = QtGui.QLabel(self.tr('Add a new attribute column'), self)
+        self.dialogHeading = QtGui.QLabel(
+                                self.tr('Add a new attribute column'),
+                                self)
 
         self.gridLayout = QtGui.QGridLayout()
 
@@ -137,7 +140,8 @@ class AddAttributesDialog(QtGui.QDialog):
 
         self.buttonBox = QtGui.QDialogButtonBox(self)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel | QtGui.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel |
+                                          QtGui.QDialogButtonBox.Ok)
 
         self.verticalLayout.addWidget(self.dialogHeading)
         self.verticalLayout.addLayout(self.gridLayout)
@@ -146,7 +150,8 @@ class AddAttributesDialog(QtGui.QDialog):
         self.buttonBox.accepted.connect(self.accept)
         self.buttonBox.rejected.connect(self.reject)
 
-        self.dataTypeComboBox.currentIndexChanged.connect(self.updateValidatorDtype)
+        self.dataTypeComboBox.currentIndexChanged.connect(
+                                                self.updateValidatorDtype)
         self.updateValidatorDtype(self.dataTypeComboBox.currentIndex())
 
     def accept(self):
@@ -157,7 +162,8 @@ class AddAttributesDialog(QtGui.QDialog):
 
         defaultValue = self.defaultValueLineEdit.text()
         try:
-            if dtype in SupportedDtypes.intTypes() + SupportedDtypes.uintTypes():
+            if dtype in (SupportedDtypes.intTypes() +
+                         SupportedDtypes.uintTypes()):
                 defaultValue = int(defaultValue)
             elif dtype in SupportedDtypes.floatTypes():
                 defaultValue = float(defaultValue)
@@ -169,7 +175,7 @@ class AddAttributesDialog(QtGui.QDialog):
                     defaultValue = Timestamp('')
             else:
                 defaultValue = dtype.type()
-        except ValueError, e:
+        except ValueError:
             defaultValue = dtype.type()
 
         self.accepted.emit(newColumn, dtype, defaultValue)
@@ -194,12 +200,15 @@ class RemoveAttributesDialog(QtGui.QDialog):
         self.setWindowTitle(self.tr('Remove Attributes'))
         self.setModal(True)
         self.resize(366, 274)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Expanding)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed,
+                                       QtGui.QSizePolicy.Expanding)
         self.setSizePolicy(sizePolicy)
 
         self.gridLayout = QtGui.QGridLayout(self)
 
-        self.dialogHeading = QtGui.QLabel(self.tr('Select the attribute column(s) which shall be removed'), self)
+        self.dialogHeading = QtGui.QLabel(
+            self.tr('Select the attribute column(s) which shall be removed'),
+            self)
 
         self.listView = QtGui.QListView(self)
 
@@ -213,7 +222,8 @@ class RemoveAttributesDialog(QtGui.QDialog):
 
         self.buttonBox = QtGui.QDialogButtonBox(self)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel | QtGui.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel | 
+                                          QtGui.QDialogButtonBox.Ok)
 
         self.gridLayout.addWidget(self.dialogHeading, 0, 0, 1, 1)
         self.gridLayout.addWidget(self.listView, 1, 0, 1, 1)
@@ -221,8 +231,6 @@ class RemoveAttributesDialog(QtGui.QDialog):
 
         self.buttonBox.accepted.connect(self.accept)
         self.buttonBox.rejected.connect(self.reject)
-
-
 
     def accept(self):
         selection = self.listView.selectedIndexes()
