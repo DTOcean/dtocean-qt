@@ -577,7 +577,7 @@ class CSVExportDialog(QtGui.QDialog):
     def _saveModel(self):
         delimiter = self._delimiterBox.currentSelected()
         header = self._headerCheckBox.isChecked() # column labels
-        filename = self._filenameLineEdit.text()
+        filename = str(self._filenameLineEdit.text())
         index = False # row labels
 
         encodingIndex = self._encodingComboBox.currentIndex()
