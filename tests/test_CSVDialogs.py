@@ -4,18 +4,24 @@ import tempfile
 
 from dtocean_qt.compat import Qt, QtCore, QtGui
 
-
-import numpy
 import pytest
-import pytestqt
 
-from dtocean_qt.views.CSVDialogs import (
-    DelimiterValidator, DelimiterSelectionWidget,
-    CSVImportDialog, CSVExportDialog
-)
-from dtocean_qt.models.DataFrameModel import DataFrameModel
+try:
+    import magic
+    from dtocean_qt.views.CSVDialogs import (DelimiterValidator,
+                                             DelimiterSelectionWidget,
+                                             CSVImportDialog,
+                                             CSVExportDialog)
+    from dtocean_qt.models.DataFrameModel import DataFrameModel
+    SKIPTESTS = False
+except ImportError, e:
+    SKIPTESTS = True
 
-FIXTUREDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fixtures')
+pytestmark = pytest.mark.skipif(SKIPTESTS,
+                                reason="Libmagic is not available")
+
+FIXTUREDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                          'fixtures')
 
 @pytest.fixture()
 def csv_file():

@@ -1,38 +1,38 @@
 # -*- coding: utf-8 -*-
 
-from dtocean_qt.compat import Qt, QtCore, QtGui
-
-import pytest
-import pytestqt
-import sys
-from dtocean_qt.excepthook import excepthook
-
-# TODO write it with pytest...
-
-def exception():
-    raise ValueError, "Test Test ä"
-
-def exception2():
-    raise ValueError, u"Test Test ä"
-
-def exception3():
-    raise ValueError, u"Test Test"
-
-def exception4():
-    raise ValueError, "Test Test"
-
-app = QtGui.QApplication([])
-sys.excepthook = excepthook
-widget = QtGui.QPushButton("raise exceptions")
-widget.move(100, 100)
-widget.resize(100, 100)
-widget.show()
-widget.clicked.connect(exception)
-widget.clicked.connect(exception2)
-widget.clicked.connect(exception3)
-widget.clicked.connect(exception4)
-app.exec_()
-        
+#from dtocean_qt.compat import Qt, QtCore, QtGui
+#
+#import pytest
+#import pytestqt
+#import sys
+#from dtocean_qt.excepthook import excepthook
+#
+## TODO write it with pytest...
+#
+#def exception():
+#    raise ValueError, "Test Test ä"
+#
+#def exception2():
+#    raise ValueError, u"Test Test ä"
+#
+#def exception3():
+#    raise ValueError, u"Test Test"
+#
+#def exception4():
+#    raise ValueError, "Test Test"
+#
+#app = QtGui.QApplication([])
+#sys.excepthook = excepthook
+#widget = QtGui.QPushButton("raise exceptions")
+#widget.move(100, 100)
+#widget.resize(100, 100)
+#widget.show()
+#widget.clicked.connect(exception)
+#widget.clicked.connect(exception2)
+#widget.clicked.connect(exception3)
+#widget.clicked.connect(exception4)
+#app.exec_()
+#        
 
 #@pytest.fixture()
 #def overwriteExcepthook():

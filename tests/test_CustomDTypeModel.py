@@ -75,10 +75,13 @@ class TestColumnDType(object):
 
         # datatype column
         index = index.sibling(0, 1)
-        ret = index.data(DTYPE_ROLE)
+        ret = index.data(DTYPE_ROLE).toPyObject()
         assert ret == numpy.dtype(numpy.int64)
+        
         # check translation / display text
-        assert index.data() == 'integer (64 bit)' == SupportedDtypes.description(ret)
+        assert (index.data().toPyObject() ==
+                'integer (64 bit)' ==
+                SupportedDtypes.description(ret))
 
         # column not defined
         index = index.sibling(0, 2)
@@ -107,7 +110,7 @@ class TestColumnDType(object):
                 continue
             else:
                 model.setData(index, string)
-                assert index.data(DTYPE_ROLE) == expected_type
+                assert index.data(DTYPE_ROLE).toPyObject() == expected_type
 
         assert model.setData(index, 'bool', Qt.DisplayRole) == False
 
@@ -130,8 +133,9 @@ class TestColumnDType(object):
         # convert datetime to anything else does not work and leave the
         # datatype unchanged. An error message is emitted.
 
-        with qtbot.waitSignal(model.changeFailed):
-            model.setData(index, 'bool')
+        with pytest.raises(pytestqt.qtbot.TimeoutError):
+            with qtbot.waitSignal(model.changeFailed):
+                model.setData(index, 'bool')
 
     def test_flags(self, dataframe):
         model = ColumnDtypeModel(dataFrame=dataframe)
