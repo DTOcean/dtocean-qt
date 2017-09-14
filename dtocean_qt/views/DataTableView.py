@@ -303,7 +303,10 @@ class DataTableWidget(QtGui.QWidget):
         model = self.tableView.model()
 
         if model is not None:
-            model.removeDataFrameColumns(columnNames)
+            sane_names = [(pos, str(qvar.toPyObject()))
+                                            for pos, qvar in columnNames]
+            print sane_names
+            model.removeDataFrameColumns(sane_names)
 
         self.removeColumnButton.setChecked(False)
 
