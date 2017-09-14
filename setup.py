@@ -53,7 +53,6 @@ class PyTest(TestCommand):
         errcode = pytest.main(self.test_args)
         sys.exit(errcode)
 
-tests_require = ['easygui', 'pandas == 0.17.1', 'pyside', 'pytest', 'pytest-cov', 'pytest-qt', 'python-magic==0.4.6']
 setup(
     name='dtocean-qt',
     version=__version__,
@@ -61,15 +60,14 @@ setup(
     namespace_packages = ['dtocean_qt'],
     author='Matthias Ludwig, Marcel Radischat, Mathew Topper',
     tests_require=tests_require,
-    install_requires=['easygui', 'pandas'],
+    install_requires=['easygui', 'pandas', 'python-magic'],
     cmdclass={'test': PyTest},
-    author_email='m.Ludwig@datalyze-solutions.com, damm_horse@yahoo.co.uk',
-    description='Utilities to use pandas (the data analysis / manipulation library for Python) with Qt.',
+    author_email='m.Ludwig@datalyze-solutions.com, dataonlygreater@gmail.com',
+    description=('Utilities to use pandas (the data analysis / manipulation '
+                 'library for Python) with Qt.'),
     long_description=long_description,
-    
     include_package_data=True,
     packages=['dtocean_qt'],
-    
     platforms='any',
     test_suite='tests',
     classifiers = [
@@ -84,6 +82,6 @@ setup(
         'Topic :: Software Development :: User Interfaces'
         ],
     extras_require={
-        'testing': tests_require,
+        'testing': ['pytest', 'pytest-qt']
     }
 )
