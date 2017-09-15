@@ -23,6 +23,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fix bugs with comparison of QStrings to Python strings.
 - Fix incorrect format (python 3) for validator return value in remove column
   dialog of a DataTable widget.
+  
+### Removed
+
+- Removed unused ui module (which contained a copy of easygui) and german
+  translations.
 
 ## [0.9.0] - 2017-02-23
 
