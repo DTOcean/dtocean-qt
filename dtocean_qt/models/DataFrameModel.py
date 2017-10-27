@@ -57,6 +57,9 @@ class DataFrameModel(QtCore.QAbstractTableModel):
     _dateDtypes = SupportedDtypes.datetimeTypes()
 
     _timestampFormat = Qt.ISODate
+    
+    # Number of rows to display per fetch
+    _row_batch_count = 100
 
     sortingAboutToStart = Signal()
     sortingFinished = Signal()
@@ -91,6 +94,8 @@ class DataFrameModel(QtCore.QAbstractTableModel):
         self._search = DataSearch("nothing", "")
         self.editable = False
         self.freeze_first = False
+        
+        self.rowsLoaded = DataFrameModel._row_batch_count
         
         return
 
@@ -395,7 +400,6 @@ class DataFrameModel(QtCore.QAbstractTableModel):
         else:
             return False
 
-
     def rowCount(self, index=QtCore.QModelIndex()):
         """returns number of rows
 
@@ -410,9 +414,40 @@ class DataFrameModel(QtCore.QAbstractTableModel):
         # 1000000 loops, best of 3: 437 ns per loop
         # In [13]: %timeit len(df.index)
         # 10000000 loops, best of 3: 110 ns per loop
-        # %timeit df.__len__()
+        # In [14]: %timeit df.__len__()
         # 1000000 loops, best of 3: 215 ns per loop
-        return len(self._dataFrame.index)
+        
+        n_rows = len(self._dataFrame.index)
+ 
+        if n_rows <= self.rowsLoaded:
+            return n_rows
+        else:
+            return self.rowsLoaded
+            
+    def canFetchMore(self, index=QtCore.QModelIndex()):
+        
+        n_rows = len(self._dataFrame.index)
+        
+        if n_rows > self.rowsLoaded:
+            return True
+        else:
+            return False
+            
+    def fetchMore(self, index=QtCore.QModelIndex()):
+        
+        n_rows = len(self._dataFrame.index)
+        
+        remainder = n_rows - self.rowsLoaded
+        itemsToFetch = min(remainder, DataFrameModel._row_batch_count)
+        
+        self.beginInsertRows(QtCore.QModelIndex(),
+                             self.rowsLoaded,
+                             self.rowsLoaded + itemsToFetch - 1)
+        
+        self.rowsLoaded += itemsToFetch
+        self.endInsertRows()
+        
+        return
 
     def columnCount(self, index=QtCore.QModelIndex()):
         """returns number of columns

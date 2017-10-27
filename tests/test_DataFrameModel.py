@@ -105,7 +105,7 @@ def test_flags():
 def test_rowCount():
     model = DataFrameModel(pandas.DataFrame([0], columns=['A']))
     assert model.rowCount() == 1
-    model = DataFrameModel(pandas.DataFrame(numpy.arange(100), columns=['A']))
+    model = DataFrameModel(pandas.DataFrame(numpy.arange(200), columns=['A']))
     assert model.rowCount() == 100
 
 def test_columnCount():
