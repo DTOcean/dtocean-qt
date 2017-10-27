@@ -4,6 +4,7 @@ import time
 import pytest
 import pytestqt
 
+import numpy
 import pandas
 
 from dtocean_qt.views.DataTableView import DataTableWidget
@@ -18,9 +19,18 @@ def dataModel():
 
 @pytest.fixture()
 def dataModel2():
-    df = pandas.DataFrame([[1,2,3,4,5,6,7,8]], columns=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'])
+    df = pandas.DataFrame([[1,2,3,4,5,6,7,8]],
+                          columns=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'])
     model = DataFrameModel(df)
     return model
+    
+    
+@pytest.fixture()
+def dataModel3():
+    df = pandas.DataFrame(numpy.arange(200), columns=['A'])
+    model = DataFrameModel(df)
+    return model
+
 
 class TestTableViewWidget(object):
 
@@ -171,7 +181,8 @@ class TestTableViewWidget(object):
                     qtbot.mouseClick(b, QtCore.Qt.LeftButton)
                     break
 
-            assert widget.view().model().columnCount() == columnCountBeforeInsert + 1 + index
+            assert widget.view().model().columnCount() == \
+                                        columnCountBeforeInsert + 1 + index
 
     def test_removeColumns(self, qtbot, dataModel2):
         
@@ -207,3 +218,20 @@ class TestTableViewWidget(object):
                 break
                         
         assert widget.view().model().columnCount() == 0
+        
+    def test_paginate(self, qtbot, dataModel3):
+        
+        widget = DataTableWidget()
+        qtbot.addWidget(widget)
+        widget.show()
+
+        widget.setViewModel(dataModel3)
+        
+        model = widget.tableView.model()
+        scroll_bar = widget.tableView.verticalScrollBar()
+                
+        scroll_bar_value = scroll_bar.value()
+        scroll_bar.setValue(scroll_bar_value + 110)
+                
+        assert model.rowsLoaded == 200
+        
