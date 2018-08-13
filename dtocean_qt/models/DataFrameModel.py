@@ -392,7 +392,7 @@ class DataFrameModel(QtCore.QAbstractTableModel):
             else:
                 raise TypeError, "try to set unhandled data type"
 
-            self._dataFrame.set_value(row, col, value)
+            self._dataFrame.at[row, col] = value
             
             #print 'after change: ', value, self._dataFrame.iloc[row][col]
             self.layoutChanged.emit()
