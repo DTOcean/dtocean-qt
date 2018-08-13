@@ -5,8 +5,7 @@ from dtocean_qt.compat import QtCore, QtGui, Qt, Slot, Signal
 from dtocean_qt.models.SupportedDtypes import SupportedDtypes
 
 import numpy
-from pandas import Timestamp
-from pandas.tslib import NaTType
+from pandas import NaT, Timestamp
 
 class DefaultValueValidator(QtGui.QValidator):
     
@@ -171,7 +170,7 @@ class AddAttributesDialog(QtGui.QDialog):
                 defaultValue = defaultValue.lower() in ['t', '1']
             elif dtype in SupportedDtypes.datetimeTypes():
                 defaultValue = Timestamp(defaultValue)
-                if isinstance(defaultValue, NaTType):
+                if isinstance(defaultValue, NaT):
                     defaultValue = Timestamp('')
             else:
                 defaultValue = dtype.type()
