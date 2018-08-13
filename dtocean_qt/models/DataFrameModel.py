@@ -625,7 +625,7 @@ class DataFrameModel(QtCore.QAbstractTableModel):
                 self.beginRemoveColumns(QtCore.QModelIndex(), position, position)
                 try:
                     self._dataFrame.drop(name, axis=1, inplace=True)
-                except ValueError, e:
+                except KeyError, e:
                     errorOccured = True
                     continue
                 self.endRemoveColumns()
