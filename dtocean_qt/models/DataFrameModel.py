@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 """Easy integration of DataFrame into pyqt framework
 
-@author: Jev Kuznetsov, Matthias Ludwig - Datalyze Solutions
+.. moduleauthor:: Jev Kuznetsov - Datalyze Solutions
+.. moduleauthor:: Matthias Ludwig - Datalyze Solutions
+.. moduleauthor:: Mathew Topper <mathew.topper@dataonlygreater.com>
 """
 
 from datetime import datetime

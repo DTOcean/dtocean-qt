@@ -9,25 +9,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- Add change log.
+- Added change log.
 - Added CI files
-- Added win64 version of libmagic library.
 - Added python-magic as a dependency.
-
-### Fixed
-
-- Fix incorrect use of Pandas ix method which read wrong table rows
-- Fix reference to pandasqt in MANIFEST.in which caused crash.
-- Fix various bugs with use of QVariant v2 API, which is not default for
-  Python 2.
-- Fix bugs with comparison of QStrings to Python strings.
-- Fix incorrect format (python 3) for validator return value in remove column
-  dialog of a DataTable widget.
+- Added pagination to DataFrameModel to accelerate loading times.
   
 ### Removed
 
 - Removed unused ui module (which contained a copy of easygui) and german
   translations.
+- Removed packaged libmagic library due to version conflicts.
+
+### Fixed
+
+- Fixed incorrect use of Pandas ix method which read wrong table rows.
+- Fixed reference to pandasqt in MANIFEST.in which caused crash.
+- Fixed various bugs with use of QVariant v2 API, which is not default for
+  Python 2.
+- Fixed bugs with comparison of QStrings to Python strings.
+- Fixed incorrect format (python 3) for validator return value in remove column
+  dialog of a DataTable widget.
+- Fixed various depreciated pandas API issues.
+
 
 ## [0.9.0] - 2017-02-23
 
