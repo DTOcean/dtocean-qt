@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """Easy integration of DataFrame into pyqt framework
 
-@author: Matthias Ludwig - Datalyze Solutions
+.. moduleauthor:: Matthias Ludwig - Datalyze Solutions
+.. moduleauthor:: Mathew Topper <mathew.topper@dataonlygreater.com>
 """
 
 from dtocean_qt.compat import Qt, QtCore, QtGui, Slot, Signal
