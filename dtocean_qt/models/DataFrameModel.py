@@ -6,17 +6,10 @@
 .. moduleauthor:: Mathew Topper <mathew.topper@dataonlygreater.com>
 """
 
-from datetime import datetime
+import numpy
+import pandas
 
 from dtocean_qt.compat import Qt, QtCore, QtGui, Slot, Signal
-
-
-import pandas
-import numpy
-
-import parser
-import re
-
 from dtocean_qt.models.ColumnDtypeModel import ColumnDtypeModel
 from dtocean_qt.models.DataSearch import DataSearch
 from dtocean_qt.models.SupportedDtypes import SupportedDtypes
@@ -370,6 +363,8 @@ class DataFrameModel(QtCore.QAbstractTableModel):
                     value = dtypeInfo.max
 
             elif columnDtype in self._floatDtypes:
+                if isinstance(value, QtCore.QVariant):
+                    value, _ = value.toFloat()
                 value = numpy.float64(value).astype(columnDtype)
 
             elif columnDtype in self._boolDtypes:
