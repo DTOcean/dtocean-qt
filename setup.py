@@ -1,25 +1,12 @@
 
 from __future__ import print_function
-from setuptools import setup, find_packages
-from setuptools.command.test import test as TestCommand
+
 import io
-import codecs
 import os
 import re
 import sys
-
-# TODO: sip is only needed for PyQt4, they should be imported together.
-try:
-    import sip
-except ImportError as e:
-    raise ImportError, "install sip first (comming with PyQt4)"
-
-try:
-    import PyQt4
-except ImportError as e:
-    # TODO: try to import PySide.
-    raise ImportError, "install PyQt4 or PySide"
-
+from setuptools import setup
+from setuptools.command.test import test as TestCommand
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -27,9 +14,10 @@ version_file = open(os.path.join(here, 'dtocean_qt', '__init__.py'), 'rU')
 __version__ = re.sub(
     r".*\b__version__\s+=\s+'([^']+)'.*",
     r'\1',
-    [ line.strip() for line in version_file if '__version__' in line ].pop(0)
+    [line.strip() for line in version_file if '__version__' in line].pop(0)
 )
 version_file.close()
+
 
 def read(*filenames, **kwargs):
     encoding = kwargs.get('encoding', 'utf-8')
@@ -60,9 +48,10 @@ setup(
     author='Matthias Ludwig, Marcel Radischat, Mathew Topper',
     install_requires=['easygui',
                       'pandas',
+                      # 'PyQt4',
                       'python-magic',
-                      # 'sip',
-                      # 'PyQt4'
+                      'setuptools',
+                      # 'sip'
                       ],
     tests_require=['pytest', 'pytest-qt'],
     cmdclass={'test': PyTest},
