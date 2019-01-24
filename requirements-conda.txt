@@ -5,6 +5,7 @@ easygui
 pandas
 python-magic
 pyqt <5
+setuptools
 
 # TEST DEPENDENCIES
 pytest-cov
