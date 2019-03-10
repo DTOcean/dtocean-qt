@@ -15,7 +15,7 @@ only_commits:
     - setup.py
 
 # version format
-version: 0.10.dev0.build{build}
+version: 0.10.0.build{build}
 
 environment:
   matrix:
@@ -36,12 +36,13 @@ install:
   - "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
   - conda config --set always_yes yes --set changeps1 no
   - conda update --quiet conda
-  - conda config --append channels conda-forge
-  - conda config --append channels dataonlygreater
   - conda info --all
-  - "conda create --quiet --name conda-env-%PYTHON_VERSION%-%ARCH% python=%PYTHON_VERSION% --file requirements-conda.txt"
-  - activate conda-env-%PYTHON_VERSION%-%ARCH%
-  - python setup.py develop
+  - conda create -n _dtocean_qt python=%PYTHON_VERSION% pip
+  - activate _dtocean_qt
+  - copy .condarc %CONDA_PREFIX%
+  - conda install --file requirements-conda-dev.txt
+  - pip install -e .
+  - conda install pytest pytest-cov pytest-qt
   
 build: off
   
@@ -51,4 +52,3 @@ test_script:
 after_test:
  - pip install codecov
  - codecov
-  
