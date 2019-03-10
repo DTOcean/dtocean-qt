@@ -44,22 +44,20 @@ setup(
     name='dtocean-qt',
     version=__version__,
     license='MIT License',
-    namespace_packages = ['dtocean_qt'],
-    author='Matthias Ludwig, Marcel Radischat, Mathew Topper',
+    maintainer='Mathew Topper',
+    maintainer_email='mathew.topper@dataonlygreater.com',
+    description=('Utilities to use pandas (the data analysis / manipulation '
+                 'library for Python) with Qt.'),
+    packages=['dtocean_qt'],
     install_requires=['easygui',
                       'pandas',
                       # 'PyQt4',
                       'python-magic',
-                      'setuptools',
                       # 'sip'
                       ],
     tests_require=['pytest', 'pytest-qt'],
-    cmdclass={'test': PyTest},
-    author_email='m.Ludwig@datalyze-solutions.com, dataonlygreater@gmail.com',
-    description=('Utilities to use pandas (the data analysis / manipulation '
-                 'library for Python) with Qt.'),
     include_package_data=True,
-    packages=['dtocean_qt'],
+    cmdclass={'test': PyTest},
     platforms='any',
     test_suite='tests',
     classifiers = [

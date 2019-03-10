@@ -1,0 +1,6 @@
+# REQUIREMENTS FOR CONDA INSTALLATION (EXCLUDING DTOCEAN PACKAGES)
+easygui
+pandas
+python-magic
+pyqt <5
+setuptools
