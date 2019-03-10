@@ -42,7 +42,7 @@ install:
   - copy .condarc %CONDA_PREFIX%
   - conda install --file requirements-conda-dev.txt
   - pip install -e .
-  - conda install pytest pytest-cov pytest-qt
+  - conda install -c conda-forge pytest pytest-cov pytest-qt
   
 build: off
   
