@@ -1,6 +1,6 @@
 [![appveyor](https://ci.appveyor.com/api/projects/status/github/DTOcean/dtocean-qt?branch=master&svg=true)](https://ci.appveyor.com/project/DTOcean/dtocean-qt)
 [![codecov](https://codecov.io/gh/DTOcean/dtocean-qt/branch/master/graph/badge.svg)](https://codecov.io/gh/DTOcean/dtocean-qt)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bb34506cc82f4df883178a6e64619eaf)](https://www.codacy.com/project/H0R5E/dtocean-qt/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DTOcean/dtocean-qt&amp;utm_campaign=Badge_Grade_Dashboard&amp;branchId=8410911)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d1e19e7a286a4e76a90d19b021bc9aca)](https://www.codacy.com/project/H0R5E/dtocean-qt/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DTOcean/dtocean-qt&amp;utm_campaign=Badge_Grade_Dashboard&amp;branchId=11757312)
 [![release](https://img.shields.io/github/release/DTOcean/dtocean-qt.svg)](https://github.com/DTOcean/dtocean-qt/releases/latest)
 
 # dtocean-qt
@@ -169,8 +169,8 @@ Finally, start the app:
 You can find other examples in the *examples* folder of the source.
 
 ```
-cd examples
-python TestApp.py
+$ cd examples
+$ python TestApp.py
 ```
 
 ## Contributing
