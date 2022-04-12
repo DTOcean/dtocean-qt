@@ -7,13 +7,6 @@
 #      general configuration      #
 #---------------------------------#
 
-# Build only for commits to certain locations
-only_commits:
-  files:
-    - dtocean_qt/
-    - tests/
-    - setup.py
-
 # version format
 version: 0.10.1.build{build}
 
