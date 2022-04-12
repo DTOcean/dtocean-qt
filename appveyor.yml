@@ -36,13 +36,12 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update --quiet conda
   - conda info --all
-  - conda create -n _dtocean_qt python=%PYTHON_VERSION% pip
+  - conda create -n _dtocean_qt python=%PYTHON_VERSION% pip pyyaml
   - activate _dtocean_qt
   - copy .condarc %CONDA_PREFIX%
   - conda install --file requirements-conda-dev.txt
   - pip install -e .
-  - conda install pytest pytest-cov
-  - conda install -c conda-forge pytest-qt
+  - conda install pytest pytest-qt pytest-cov
 
 build: off
 
