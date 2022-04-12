@@ -21,7 +21,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 -   Fixed minimum pandas dependency version.
 -   Fixed codacy configuration.
 
-
 ## [0.10.0] - 2019-03-12
 
 ### Added
@@ -47,7 +46,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 -   Fixed incorrect format (python 3) for validator return value in remove 
     column dialog of a DataTable widget.
 -   Fixed various depreciated pandas API issues.
-
 
 ## [0.9.0] - 2017-02-23
 
