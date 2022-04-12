@@ -1,6 +1,6 @@
 [![appveyor](https://ci.appveyor.com/api/projects/status/github/DTOcean/dtocean-qt?branch=master&svg=true)](https://ci.appveyor.com/project/DTOcean/dtocean-qt)
 [![codecov](https://codecov.io/gh/DTOcean/dtocean-qt/branch/master/graph/badge.svg)](https://codecov.io/gh/DTOcean/dtocean-qt)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d1e19e7a286a4e76a90d19b021bc9aca)](https://www.codacy.com/project/H0R5E/dtocean-qt/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DTOcean/dtocean-qt&amp;utm_campaign=Badge_Grade_Dashboard&amp;branchId=11757312)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/7349c8189d9d4466a46cb8dffd94d418)](https://www.codacy.com/gh/DTOcean/dtocean-qt/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DTOcean/dtocean-qt&amp;utm_campaign=Badge_Grade)
 [![release](https://img.shields.io/github/release/DTOcean/dtocean-qt.svg)](https://github.com/DTOcean/dtocean-qt/releases/latest)
 
 # dtocean-qt
@@ -9,7 +9,7 @@ Utilities to use pandas (the data analysis / manipulation library for Python)
 with Qt within the DTOcean software suite. This package is a dependency of 
 [dtocean-app](https://github.com/DTOcean/dtocean-app).
 
-* For python 2.7 only.
+\* For python 2.7 only.
 
 ## Installation
 
