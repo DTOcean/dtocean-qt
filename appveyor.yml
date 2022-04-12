@@ -7,15 +7,8 @@
 #      general configuration      #
 #---------------------------------#
 
-# Build only for commits to certain locations
-only_commits:
-  files:
-    - dtocean_qt/
-    - tests/
-    - setup.py
-
 # version format
-version: 0.10.0.build{build}
+version: 0.10.1.build{build}
 
 environment:
   matrix:
@@ -27,7 +20,6 @@ environment:
       MINICONDA: C:\Miniconda-x64
       ARCH: "64"
 
-
 init:
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1')) # RDP
   - "ECHO %PYTHON_VERSION% %MINICONDA%"
@@ -37,13 +29,12 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update --quiet conda
   - conda info --all
-  - conda create -n _dtocean_qt python=%PYTHON_VERSION% pip
+  - conda create -n _dtocean_qt python=%PYTHON_VERSION% pip pyyaml
   - activate _dtocean_qt
   - copy .condarc %CONDA_PREFIX%
   - conda install --file requirements-conda-dev.txt
   - pip install -e .
-  - conda install pytest pytest-cov
-  - conda install -c conda-forge pytest-qt
+  - conda install -c conda-forge "pytest<4" pytest-qt pytest-cov
 
 build: off
 
