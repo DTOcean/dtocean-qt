@@ -15,7 +15,7 @@ only_commits:
     - setup.py
 
 # version format
-version: 0.10.0.build{build}
+version: 0.10.1.build{build}
 
 environment:
   matrix:
@@ -26,7 +26,6 @@ environment:
     - PYTHON_VERSION: 2.7
       MINICONDA: C:\Miniconda-x64
       ARCH: "64"
-
 
 init:
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1')) # RDP

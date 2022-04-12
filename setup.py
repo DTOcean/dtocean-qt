@@ -1,32 +1,9 @@
 
-from __future__ import print_function
-
-import io
-import os
-import re
 import sys
+
+import yaml
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
-
-here = os.path.abspath(os.path.dirname(__file__))
-
-version_file = open(os.path.join(here, 'dtocean_qt', '__init__.py'), 'rU')
-__version__ = re.sub(
-    r".*\b__version__\s+=\s+'([^']+)'.*",
-    r'\1',
-    [line.strip() for line in version_file if '__version__' in line].pop(0)
-)
-version_file.close()
-
-
-def read(*filenames, **kwargs):
-    encoding = kwargs.get('encoding', 'utf-8')
-    sep = kwargs.get('sep', '\n')
-    buf = []
-    for filename in filenames:
-        with io.open(filename, encoding=encoding) as f:
-            buf.append(f.read())
-    return sep.join(buf)
 
 
 class PyTest(TestCommand):
@@ -40,9 +17,29 @@ class PyTest(TestCommand):
         errcode = pytest.main(self.test_args)
         sys.exit(errcode)
 
+
+def read_yaml(rel_path):
+    with open(rel_path, 'r') as stream:
+        data_loaded = yaml.safe_load(stream)
+    return data_loaded
+
+
+def get_appveyor_version():
+    
+    data = read_yaml("appveyor.yml")
+    
+    if "version" not in data:
+        raise RuntimeError("Unable to find version string.")
+    
+    appveyor_version = data["version"]
+    last_dot_idx = appveyor_version.rindex(".")
+    
+    return appveyor_version[:last_dot_idx]
+
+
 setup(
     name='dtocean-qt',
-    version=__version__,
+    version=get_appveyor_version(),
     license='MIT License',
     maintainer='Mathew Topper',
     maintainer_email='mathew.topper@dataonlygreater.com',

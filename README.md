@@ -30,7 +30,7 @@ Conda can be used to install dependencies into a dedicated environment from
 the source code root directory:
 
 ```
-$ conda create -n _dtocean_qt python=2.7 pip
+$ conda create -n _dtocean_qt python=2.7 pip pyyaml
 ```
 
 Activate the environment, then copy the `.condrc` file to store installation  
@@ -69,7 +69,6 @@ $ conda activate _dtocean_qt
 Install packages required for testing to the environment (one time only):
 
 ```
-$ conda install -y pytest
 $ conda install -y -c conda-forge pytest-qt
 ```
 
