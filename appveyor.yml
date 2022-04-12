@@ -34,7 +34,7 @@ install:
   - copy .condarc %CONDA_PREFIX%
   - conda install --file requirements-conda-dev.txt
   - pip install -e .
-  - conda install -c conda-forge pytest pytest-qt pytest-cov
+  - conda install -c conda-forge "pytest<4" pytest-qt pytest-cov
 
 build: off
 
