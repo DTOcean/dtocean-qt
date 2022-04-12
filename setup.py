@@ -47,7 +47,7 @@ setup(
                  'library for Python) with Qt.'),
     packages=['dtocean_qt'],
     install_requires=['easygui',
-                      'pandas',
+                      'pandas>=0.23',
                       # 'PyQt4',
                       'python-magic',
                       # 'sip'
