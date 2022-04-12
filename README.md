@@ -69,7 +69,7 @@ $ conda activate _dtocean_qt
 Install packages required for testing to the environment (one time only):
 
 ```
-$ conda install -y pytest pytest-qt
+$ conda install -y -c conda-forge pytest pytest-qt
 ```
 
 Run the tests:
