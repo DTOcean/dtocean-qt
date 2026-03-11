@@ -1,7 +1,9 @@
-[![appveyor](https://ci.appveyor.com/api/projects/status/github/DTOcean/dtocean-qt?branch=master&svg=true)](https://ci.appveyor.com/project/DTOcean/dtocean-qt)
-[![codecov](https://codecov.io/gh/DTOcean/dtocean-qt/branch/master/graph/badge.svg)](https://codecov.io/gh/DTOcean/dtocean-qt)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/7349c8189d9d4466a46cb8dffd94d418)](https://www.codacy.com/gh/DTOcean/dtocean-qt/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DTOcean/dtocean-qt&amp;utm_campaign=Badge_Grade)
-[![release](https://img.shields.io/github/release/DTOcean/dtocean-qt.svg)](https://github.com/DTOcean/dtocean-qt/releases/latest)
+***
+
+:loudspeaker: This repository was archived on 11 March 2026. It is now
+maintained in the [dtocean](https://github.com/DTOcean/dtocean) monorepo.
+
+***
 
 # dtocean-qt
 
